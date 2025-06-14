@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      (function () {
+        const temaSalvo = localStorage.getItem('tema');
+        if (temaSalvo === 'escuro') {
+          document.documentElement.classList.add('dark-theme');
+        }
+      })();
+    </script>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="../cart/carrinho.css" />
+    <link rel="stylesheet" href="../header/header.css" />
+    <link rel="stylesheet" href="pagina-produto.css" />
+    <title>Detalhes do Produto</title>
+  </head>
+  <body>
+    <header id="header-placeholder"></header>
+    <main class="pagina-produto">
+      <div class="produto-card">
+        <img id="imagem-produto" src="" alt="" />
+      </div>
+      <div class="produto-info">
+        <h3 id="nome-produto"></h3>
+        <h2 id="preco-produto"></h2>
+        <div class="controle-quantidade">
+          <img id="menos" src="../assets/icons/menos.svg" alt="Menos" />
+          <span id="quantidade">1</span>
+          <img id="mais" src="../assets/icons/mais.svg" alt="Mais" />
+        </div>
+        <button id="btn-adicionar-carrinho" class="btn-adicionar-carrinho">
+          Adicionar ao Carrinho
+        </button>
+      </div>
+    </main>
+    <script src="../header/loadHeader.js"></script>
+    <script src="pagina-produto.js"></script>
+  </body>
+</html>

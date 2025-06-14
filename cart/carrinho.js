@@ -1,4 +1,7 @@
 console.log("carrinho.js carregado");
+const baseURL =
+  (document.currentScript &&
+    document.currentScript.src.split("cart/")[0]) || "";
 
 document.addEventListener("DOMContentLoaded", () => {
   const botoesAdicionar = document.querySelectorAll(".btn-adicionar");
@@ -58,19 +61,16 @@ document.addEventListener("DOMContentLoaded", () => {
     botao.addEventListener("click", () => {
       const id = botao.getAttribute("data-id");
       const nome = botao.getAttribute("data-nome");
-      const preco = parseFloat(botao.getAttribute("data-preco"));
+      const preco = botao.getAttribute("data-preco");
+      const imgEl = botao.parentElement.querySelector("img");
+      const img = imgEl ? imgEl.src : "";
 
-      const itemExistente = carrinho.find((prod) => prod.id === id);
+      sessionStorage.setItem(
+        "produtoSelecionado",
+        JSON.stringify({ id, nome, preco, img })
+      );
 
-      if (itemExistente) {
-        itemExistente.quantidade += 1;
-      } else {
-        carrinho.push({ id, nome, preco, quantidade: 1 });
-      }
-
-      salvarCarrinho();
-      atualizarContador();
-      atualizarDropdown();
+      window.location.href = baseURL + "pagina-produto/pagina-produto.html";
     });
   });
 
